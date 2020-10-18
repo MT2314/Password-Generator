@@ -3,7 +3,7 @@
 # **Password Generator ScriptWork**
 ---
 <br />
-![image info](Assets/Images/passGen.png)
+<img src="Assets/Images/passGen.png" alt="alt text" width="600"/>
 
 ## Job Requirements
 ---
