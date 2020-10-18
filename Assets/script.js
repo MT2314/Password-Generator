@@ -1,18 +1,3 @@
-// // Assignment Code
-// var generateBtn = document.querySelector("#generate");
-
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;
-
-// }
-
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
-
 
 // Dom Selection
 
@@ -24,64 +9,21 @@ var numbersEl = document.getElementById('numbers');
 var symbolsEl = document.getElementById('symbols');
 var generateEl = document.getElementById('generate');
 
-
 // Button onclick - Generate Event
 generate.addEventListener('click', function(){
-    // + = unitary operator to turn string => number
-    var length = +lengthEl.value;
-    var hasLower = lowercaseEl.checked;
-    var hasUpper = uppercaseEl.checked;
-    var hasNumber = numbersEl.checked;
-    var hasSymbol = symbolsEl.checked;
+  // + = unitary operator to turn string => number
+  var length = +lengthEl.value;
+  var hasLower = lowercaseEl.checked;
+  var hasUpper = uppercaseEl.checked;
+  var hasNumber = numbersEl.checked;
+  var hasSymbol = symbolsEl.checked;
 
-    resultsEl.innerText = generatePassword(
-        hasLower,
-        hasUpper, 
-        hasNumber, 
-        hasSymbol,
-        length
-    );
+// Display Password
+  resultsEl.innerText = generatePassword(
+      hasLower,
+      hasUpper, 
+      hasNumber, 
+      hasSymbol,
+      length
+  );
 });
-
-// Random Functions Object 
-var randomFunc = {
-    lower: getRandomLower,
-    upper: getRandomUpper,
-    number: getRandomNumber,
-    symbol: getRandomSymbol
-
-};
-
-
-
-
-//PASSWORD GENERATOR-functions
-
-
-
-// Generate Random Lowercase Letter
-function getRandomLower(){
-    //97 - Charcode "a"   26 - letters in alphabet 
-   return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-};
-
-// Generate Random Uppercase Letter
-function getRandomUpper(){
-    //65 - Charcode "A"   26 - letters in alphabet 
-   return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-};
-
-// Generate Random Number
-function getRandomNumber(){
-    //97 - Charcode "0"   26 - letters in alphabet 
-   return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-};
-
-// Generate Random Symbol
-function getRandomSymbol(){
-    var symbols = "!”#$%&’()*+";
-    // Random * symbols string length
-    return symbols[Math.floor(Math.random() * symbols.length)];
-};
-
-console.log(getRandomSymbol());
