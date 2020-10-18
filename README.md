@@ -38,8 +38,12 @@ Full Stack Flex Program** - *Initial HTML and CSS*
 :school:
 
 :heart: 
-**Students and Instructors At the UFT-FSF-2020-2021*
+*Students and Instructors At the UFT-FSF-2020-2021*
 :heart:
+
+:scroll:
+*Fisher-Yates ---Shuffle Function*
+:scroll:
 </br>
 
 ## License
