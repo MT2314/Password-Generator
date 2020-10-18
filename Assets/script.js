@@ -123,7 +123,7 @@ function getRandomNumber(){
 
 // Generate Random Symbol
 function getRandomSymbol(){
-    var symbols = "!”#$%&’()*+";
+    var symbols = "!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
     // Random * symbols string length
     return symbols[Math.floor(Math.random() * symbols.length)];
 };
