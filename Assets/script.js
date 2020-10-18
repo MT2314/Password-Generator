@@ -1,13 +1,7 @@
 // Dom Selection
 
 var resultsEl = document.getElementById('result');
-var lengthEl = document.getElementById('length');
-var uppercaseEl = document.getElementById('uppercase');
-var lowercaseEl = document.getElementById('lowercase');
-var numbersEl = document.getElementById('numbers');
-var symbolsEl = document.getElementById('symbols');
 var generateEl = document.getElementById('generate');
-var clipboardEl = document.getElementById('clipboard');
 
 // Random Functions Object 
 var randomFunc = {
@@ -15,24 +9,49 @@ var randomFunc = {
     upper: getRandomUpper,
     number: getRandomNumber,
     symbol: getRandomSymbol
-
-};  
-
+};
 
 // Button onclick - Generate Event
-generate.addEventListener('click', function(){
-    // + = unitary operator to turn string => number
-    var length = +lengthEl.value;
-    var hasLower = lowercaseEl.checked;
-    var hasUpper = uppercaseEl.checked;
-    var hasNumber = numbersEl.checked;
-    var hasSymbol = symbolsEl.checked;
+generate.addEventListener('click', function () {
 
-// Display Password
+    // Password Length Prompt
+    var length = prompt("How many characters in your password?");
+    // Limit
+    for (var i = 0; i != 1;) {
+        switch (length >= 8 && length <= 128) {
+            case true:
+                console.log("works");
+                i = 1;
+                break;
+            case false:
+                alert("Choose Password Length between 8 - 128 characters")
+                length = prompt("How many characters in your password?");
+                i = 0;
+                continue;
+        }
+    };
+
+    for (var i = 0; i != 1;) {
+        // Prompt for character type variables
+        var hasLower = confirm("Do you want lowercase characters in the password");
+        var hasUpper = confirm("Do you want uppercase characters in the password");
+        var hasNumber = confirm("Do you want number characters in the password");
+        var hasSymbol = confirm("Do you want symbol characters in the password");
+
+        //Check if atleast 1 character type is selected
+        if (hasLower == true || hasUpper == true || hasNumber == true || hasSymbol == true) {
+            i = 1;
+        }
+        else {
+            alert("Must use atleast 1 character type!")
+        }
+    }
+
+    // Display Password
     resultsEl.innerText = generatePassword(
         hasLower,
-        hasUpper, 
-        hasNumber, 
+        hasUpper,
+        hasNumber,
         hasSymbol,
         length
     );
@@ -42,87 +61,87 @@ generate.addEventListener('click', function(){
 
 function generatePassword(lower, upper, number, symbol, length) {
 
-// Password Array
-var password = [];
+    // Password Array
+    var password = [];
 
-// Loop cycles == user selection of password length
-for(var i=0; i<length;){
+    // Loop cycles == user selection of password length
+    for (var i = 0; i < length;) {
 
-    // Switch cases for user selection and character generator
-    switch (lower){
+        // Switch cases for user selection and character generator
+        switch (lower) {
 
-        case true:
-            password.push(randomFunc.lower());
-            i++;
-            break
+            case true:
+                password.push(randomFunc.lower());
+                i++;
+                break
 
-        case false:
-            break
+            case false:
+                break
 
-    }
-   
-    switch (upper){
+        }
 
-        case true:
-            password.push(randomFunc.upper());
-            i++;
-            break
+        switch (upper) {
 
-        case false:
-            break
+            case true:
+                password.push(randomFunc.upper());
+                i++;
+                break
 
-    }
+            case false:
+                break
+
+        }
 
 
-    switch (number){
+        switch (number) {
 
-        case true:
-            password.push(randomFunc.number());
-            i++;
-            break
+            case true:
+                password.push(randomFunc.number());
+                i++;
+                break
 
-        case false:
-            break
+            case false:
+                break
 
-    }
+        }
 
-    switch (symbol){
+        switch (symbol) {
 
-        case true:
-            password.push(randomFunc.symbol());
-            i++;
-            break
+            case true:
+                password.push(randomFunc.symbol());
+                i++;
+                break
 
-        case false:
-            break
+            case false:
+                break
 
-    }
-};
-return password.join("");
+        }
+    };
+    return password.join("");
 };
 
 //PASSWORD GENERATOR-functions
 
 // Generate Random Lowercase Letter
-function getRandomLower(){
+function getRandomLower() {
     //97 - Charcode "a"   26 - letters in alphabet 
-   return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+    return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 };
 
 // Generate Random Uppercase Letter
-function getRandomUpper(){
+function getRandomUpper() {
     //65 - Charcode "A"   26 - letters in alphabet 
-   return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+    return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
 };
 
 // Generate Random Number
-function getRandomNumber(){
+function getRandomNumber() {
     //97 - Charcode "0"   26 - letters in alphabet 
-   return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+    return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 };
 
 // Generate Random Symbol
-function getRandomSymbol(){
+function getRandomSymbol() {
     var symbols = "!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
     // Random * symbols string length
     return symbols[Math.floor(Math.random() * symbols.length)];
