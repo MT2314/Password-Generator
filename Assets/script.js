@@ -20,7 +20,6 @@ generate.addEventListener('click', function () {
     for (var i = 0; i != 1;) {
         switch (length >= 8 && length <= 128) {
             case true:
-                console.log("works");
                 i = 1;
                 break;
             case false:
